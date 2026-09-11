@@ -1,0 +1,7 @@
+{
+  "name": "MoneyPilot",
+  "description": "AI-powered personal finance assistant that tracks spending, automates budgeting & goals, and gives intelligent financial advice.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
