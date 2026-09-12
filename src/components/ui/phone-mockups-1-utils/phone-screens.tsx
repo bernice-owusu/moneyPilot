@@ -216,7 +216,7 @@ export function BudgetScreen({ playing }: { playing: boolean }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.38, delay: 0.75, ease }}
         >
-          <p className="text-[10px] font-medium text-[#176FE8]">Still safe — GHS 47/day remaining pace</p>
+          <p className="text-[10px] font-medium text-[#176FE8]">Still safe. GHS 47/day remaining pace</p>
         </motion.div>
       </div>
     </div>

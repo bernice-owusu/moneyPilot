@@ -273,7 +273,7 @@ function generateFallbackChatReply(message: string, financialContext: any = {}) 
       const monthlyPace = Math.round(cost / realisticMonths);
 
       return {
-        text: `### Realistic Affordability Assessment\n\n- **Target Item Cost**: **${currency}${cost.toLocaleString()}**\n- **Current Disposable Cash**: **${currency}${remaining.toLocaleString()}**\n\n❌ **Not recommended right now — would cause a ${currency}${deficit.toLocaleString()} deficit.**\nAttempting to buy this today would exhaust your monthly funds and force reliance on expensive short-term debt or overdrafts.\n\n**Realistic Savings Roadmap:**\nBy allocating **${currency}${monthlyPace}/month** (about 15% of income) into a dedicated target envelope, you will comfortably purchase it in **${realisticMonths} months** completely debt-free.`,
+        text: `### Realistic Affordability Assessment\n\n- **Target Item Cost**: **${currency}${cost.toLocaleString()}**\n- **Current Disposable Cash**: **${currency}${remaining.toLocaleString()}**\n\n❌ **Not recommended right now. This would cause a ${currency}${deficit.toLocaleString()} deficit.**\nAttempting to buy this today would exhaust your monthly funds and force reliance on expensive short-term debt or overdrafts.\n\n**Realistic Savings Roadmap:**\nBy allocating **${currency}${monthlyPace}/month** (about 15% of income) into a dedicated target envelope, you will comfortably purchase it in **${realisticMonths} months** completely debt-free.`,
         financialBreakdown: [
           { label: "Item Cost", value: `${currency}${cost.toLocaleString()}` },
           { label: "Current Deficit", value: `-${currency}${deficit.toLocaleString()}` },
