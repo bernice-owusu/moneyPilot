@@ -1,20 +1,75 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# MoneyPilot
 
-# Run and deploy your AI Studio app
+Smart personal finance for everyday Ghanaians. Track bank and MoMo together, spend with a Safe Daily Pace, save in vaults, and get practical Gemini-backed guidance.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/1a0bef05-a5ca-4e3d-9dbe-42c5f66b3a79
+- Track bank, MoMo, and cash in one view
+- Safe Daily Pace so you know what you can spend before payday
+- Verified savings vaults with purpose
+- Gemini AI copilot for affordability checks and next steps
+- Editorial landing page with an autoplay product carousel
 
-## Run Locally
+## Prerequisites
 
-**Prerequisites:**  Node.js
+- Node.js 18+
+- A Gemini API key
 
+## Getting started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+cp .env.example .env.local
+```
+
+Set `GEMINI_API_KEY` in `.env.local`, then:
+
+```bash
+npm run dev
+```
+
+The app serves the landing page first. Use **Try MoneyPilot** to open the console.
+
+## Usage
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Run the Express + Vite app locally |
+| `npm run build` | Production client + server build |
+| `npm start` | Serve the production build |
+| `npm run lint` | Typecheck with `tsc --noEmit` |
+
+Optional env:
+
+| Variable | Purpose |
+| --- | --- |
+| `GEMINI_API_KEY` | Gemini API calls |
+| `APP_URL` | Public app URL (OAuth, self-links) |
+
+## Project layout
+
+```text
+public/assets/     required assets (images + architecture guide)
+src/components/    app screens
+src/components/ui/ landing and shared UI
+src/App.tsx        landing page + finance console
+server.ts          Express host and Gemini routes
+```
+
+Hero screens rotate on their own. There are no carousel click, pause, or hover controls.
+
+## Assets
+
+Keep every required asset in `public/assets/`. There is no `design/` folder.
+
+| File | Used for |
+| --- | --- |
+| `all_accounts_card.png` | Track Bank & MoMo feature |
+| `smarter_spending_happier_living.png` | Safe Daily Pace feature |
+| `savings_vault_card.png` | Savings vaults feature |
+| `build_brighter_tomorrows.png` | AI advisor feature |
+| `from_momo_to_more.png` | Campaign still |
+| `subtle-paper-grain.png` | Hero paper texture |
+| `MoneyPilot_Product_Architecture_Guide.md` | Product architecture notes |
+
+Reference images as `/assets/<filename>`.

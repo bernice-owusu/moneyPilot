@@ -192,7 +192,7 @@ export const AiAssistantView: React.FC<AiAssistantViewProps> = ({
             </h2>
           </div>
           <p className="text-[11px] sm:text-xs text-muted-gray mt-1">
-            MoneyPilot doesn't just record transactions — it tells you what to do next with your money.
+            MoneyPilot doesn't just record transactions. It tells you what to do next with your money.
           </p>
         </div>
 

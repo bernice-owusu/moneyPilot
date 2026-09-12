@@ -1,4 +1,4 @@
-MoneyPilot — Product & Architecture Guide
+MoneyPilot: Product & Architecture Guide
 MoneyPilot is an intelligent, full-stack personal finance platform designed around a single guiding principle: "Know where your money goes. Know
 what to do next.
 "
@@ -20,7 +20,7 @@ Enforcing Savings Proof (distinguishing unallocated cash buffers from locked, ve
 ●
 Computing a live Daily Safe Pacing threshold ($X/day left until payday).
 ●
-Providing Pragmatic AI Advice that recommends sustainable 10–15% optimizations and evaluates real post-purchase liquidity.
+Providing Pragmatic AI Advice that recommends sustainable 10-15% optimizations and evaluates real post-purchase liquidity.
 2. Platform Architecture & Data Pipeline
 codeCode
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -175,12 +175,12 @@ Mid-Month Diagnostic ("Why am I broke before payday?"):
 ○
 Analyzes the compounding effect of frequent micro-transactions (e.g., daily ride-shares or delivery orders).
 ○
-Proposes sustainable 10–15% adjustments (e.g., trimming two takeout meals per week) rather than impractical total austerity.
+Proposes sustainable 10-15% adjustments (e.g., trimming two takeout meals per week) rather than impractical total austerity.
 Actionable Observation Cards:
 ○
 Generates real-time insight cards on the dashboard, each containing an Observation, an explanation of Why It Matters, and a
 concrete One-Tap Action Step.
-Feature 8: Financial Health Score (0–100)
+Feature 8: Financial Health Score (0-100)
 A holistic financial scorecard evaluated across five core pillars:
 1. Savings Rate Score (25 pts): Scales up to full points when achieving a 20%+ savings rate.
 2. Budget Discipline Score (25 pts): Based on compliance across all active envelopes.
@@ -241,4 +241,4 @@ Built-in Avalanche optimization (highest
 APR first)
 Realistic, grounded coaching with
 post-purchase liquidity checks
-Health Score Single arbitrary rating Comprehensive 5-pillar scorecard (0–100)
+Health Score Single arbitrary rating Comprehensive 5-pillar scorecard (0-100)

@@ -4,7 +4,7 @@ type PhoneMockupProps = {
   className?: string;
 };
 
-/** In-product phone visual — keeps MoneyPilot identity without missing asset dependency. */
+/** In-product phone visual. Keeps MoneyPilot identity without missing asset dependency. */
 export const PhoneMockup: React.FC<PhoneMockupProps> = ({ className = '' }) => {
   return (
     <div

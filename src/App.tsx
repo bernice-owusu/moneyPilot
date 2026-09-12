@@ -9,10 +9,10 @@ import {
   Bot as BotIcon,
 } from 'lucide-react';
 
-import allAccountsCard from '../design/assets/cards/all_accounts_card.png';
-import brighterTomorrowCard from '../design/assets/cards/build_brighter_tomorrows.png';
-import smarterSpendingCard from '../design/assets/cards/smarter_spending_happier_living.png';
-import savingsVaultCard from '../design/assets/cards/savings_vault_card.png';
+const allAccountsCard = '/assets/all_accounts_card.png';
+const brighterTomorrowCard = '/assets/build_brighter_tomorrows.png';
+const smarterSpendingCard = '/assets/smarter_spending_happier_living.png';
+const savingsVaultCard = '/assets/savings_vault_card.png';
 
 import { BrandWordmark } from './components/ui/BrandWordmark';
 import { EditorialHeroHeading } from './components/ui/EditorialHeroHeading';
@@ -396,7 +396,7 @@ export const App: React.FC = () => {
     {
       title: 'Track Bank & MoMo Together',
       description:
-        'Unify your bank accounts, mobile money (MoMo), and cash in one clear view — no more app-hopping.',
+        'Unify your bank accounts, mobile money (MoMo), and cash in one clear view. No more app-hopping.',
       icon: Wallet,
       image: allAccountsCard,
     },
@@ -449,7 +449,7 @@ export const App: React.FC = () => {
       title:
         'Can I track my bank and MoMo in one place?',
       answer:
-        'Yes. MoneyPilot brings your Absa bank account and MTN MoMo together so you can see total balance, track spending, and get personalised insights — all in one secure app.',
+        'Yes. MoneyPilot brings your Absa bank account and MTN MoMo together so you can see total balance, track spending, and get personalised insights, all in one secure app.',
     },
     {
       title:
@@ -816,7 +816,7 @@ export const App: React.FC = () => {
         >
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-14">
 
-            {/* LEFT — COPY */}
+            {/* LEFT: COPY */}
             <div className="relative z-20 flex flex-col items-start text-left lg:col-span-6 xl:col-span-6">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white/90">
                 <span className="rounded bg-white px-1.5 py-0.5 text-[10px] font-bold text-ink">
@@ -885,7 +885,7 @@ export const App: React.FC = () => {
               </div>
             </div>
 
-            {/* RIGHT — PHONE */}
+            {/* RIGHT: PHONE */}
             <div className="relative z-10 min-w-0 overflow-hidden lg:col-span-6 xl:col-span-6">
               <PhoneMockupBasic />
             </div>
@@ -914,7 +914,7 @@ export const App: React.FC = () => {
 
             <p className="mt-5 max-w-[560px] text-[17px] leading-relaxed text-muted-gray sm:text-lg">
               An all-in-one personal finance app for everyday
-              Ghanaians. Track, plan, save and grow — with local
+              Ghanaians. Track, plan, save and grow, with local
               support, intelligent tools, and guidance for a brighter
               tomorrow.
             </p>
@@ -991,7 +991,7 @@ export const App: React.FC = () => {
               </h2>
 
               <p className="mt-5 max-w-[480px] text-[17px] leading-relaxed text-muted-gray">
-                Built for real Ghanaian money flows — salary,
+                Built for real Ghanaian money flows: salary,
                 MoMo, side hustles, family support, and the bills
                 that never wait.
               </p>
@@ -1102,7 +1102,7 @@ export const App: React.FC = () => {
 
               <p className="mt-5 max-w-[520px] text-[17px] leading-relaxed text-white/90 sm:text-lg">
                 MoneyPilot is designed around how money actually
-                moves — between Absa, MTN MoMo, cash, family,
+                moves between Absa, MTN MoMo, cash, family,
                 and goals that matter.
               </p>
             </div>
@@ -1238,7 +1238,7 @@ export const App: React.FC = () => {
 
               <p className="mt-5 max-w-[520px] text-[17px] leading-relaxed text-white/75">
                 Get practical money tips, product updates, and
-                financial insights made for everyday Ghanaians —
+                financial insights made for everyday Ghanaians,
                 straight to your inbox.
               </p>
             </div>
