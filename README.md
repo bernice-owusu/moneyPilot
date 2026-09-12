@@ -1,6 +1,6 @@
 # MoneyPilot
 
-AI-powered personal finance for everyday Ghanaians. Track bank and MoMo together, budget with a safe daily pace, save in vaults, and get practical Gemini-backed guidance.
+Smart personal finance for everyday Ghanaians. Track bank and MoMo together, spend with a Safe Daily Pace, save in vaults, and get practical Gemini-backed guidance.
 
 ![MoneyPilot landing page](public/assets/screenshot-landing.jpg)
 
@@ -8,10 +8,10 @@ AI-powered personal finance for everyday Ghanaians. Track bank and MoMo together
 
 ## Features
 
-- Unified bank, MoMo, and cash tracking
-- Safe daily spend, budgets, goals, and debts
-- Savings vaults and recurring bills
-- Gemini AI copilot for affordability and next steps
+- Track bank, MoMo, and cash in one view
+- Safe Daily Pace so you know what you can spend before payday
+- Verified savings vaults with purpose
+- Gemini AI copilot for affordability checks and next steps
 - Editorial landing page with an autoplay product carousel
 
 ## Prerequisites
@@ -79,4 +79,3 @@ Keep every required asset in `public/assets/`. There is no `design/` folder.
 | `MoneyPilot_Product_Architecture_Guide.md` | Product architecture notes |
 
 Reference images as `/assets/<filename>`.
-
