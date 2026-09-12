@@ -2,6 +2,10 @@
 
 Smart personal finance for everyday Ghanaians. Track bank and MoMo together, spend with a Safe Daily Pace, save in vaults, and get practical Gemini-backed guidance.
 
+![MoneyPilot landing page](public/assets/screenshot-landing.jpg)
+
+![MoneyPilot dashboard](public/assets/screenshot-app.jpg)
+
 ## Features
 
 - Track bank, MoMo, and cash in one view
@@ -64,6 +68,8 @@ Keep every required asset in `public/assets/`. There is no `design/` folder.
 
 | File | Used for |
 | --- | --- |
+| `screenshot-landing.jpg` | README landing preview |
+| `screenshot-app.jpg` | README dashboard preview |
 | `all_accounts_card.png` | Track Bank & MoMo feature |
 | `smarter_spending_happier_living.png` | Safe Daily Pace feature |
 | `savings_vault_card.png` | Savings vaults feature |
