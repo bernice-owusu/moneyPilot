@@ -100,6 +100,26 @@ export function calculateSummary(
   };
 }
 
+/** Future value of a lump sum plus monthly contributions, compounded monthly. */
+export function projectCompoundGrowth(
+  principal: number,
+  monthlyContribution: number,
+  years: number,
+  annualRate = 0.12
+) {
+  const months = Math.max(0, years) * 12;
+  const r = annualRate / 12;
+  if (months === 0) {
+    return Math.max(0, principal);
+  }
+  if (r === 0) {
+    return Math.max(0, principal + monthlyContribution * months);
+  }
+  const grownPrincipal = principal * Math.pow(1 + r, months);
+  const grownContributions = monthlyContribution * ((Math.pow(1 + r, months) - 1) / r);
+  return Math.max(0, grownPrincipal + grownContributions);
+}
+
 export function computeFinancialHealthScore(
   transactions: Transaction[],
   monthlyIncome: number,
