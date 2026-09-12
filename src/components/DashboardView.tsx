@@ -46,6 +46,7 @@ import {
   ExpenseCategory 
 } from '../types';
 import { calculateSummary, CATEGORY_COLORS, ALL_CATEGORIES } from '../utils/finance';
+import { TimeMachine } from './ui/TimeMachine';
 
 interface DashboardViewProps {
   profile: UserProfile;
@@ -88,10 +89,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
 
   // Cash flow bar data
   const cashFlowData = [
-    { name: 'Income', amount: summary.effectiveIncome, fill: '#10b981' },
-    { name: 'Expenses', amount: summary.totalExpenses, fill: '#f43f5e' },
-    { name: 'Savings', amount: summary.totalSavings, fill: '#06b6d4' },
-    { name: 'Remaining', amount: Math.max(0, summary.remaining), fill: '#6366f1' }
+    { name: 'Income', amount: summary.effectiveIncome, fill: '#176FE8' },
+    { name: 'Expenses', amount: summary.totalExpenses, fill: '#171717' },
+    { name: 'Savings', amount: summary.totalSavings, fill: '#58A5FA' },
+    { name: 'Remaining', amount: Math.max(0, summary.remaining), fill: '#4294F4' }
   ];
 
   // Calculate days remaining and daily safe pacing
@@ -165,8 +166,8 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   };
 
   const getScoreBadgeColor = (score: number) => {
-    if (score >= 80) return 'text-emerald-400 bg-emerald-500/15 border-emerald-500/30';
-    if (score >= 65) return 'text-teal-400 bg-teal-500/15 border-teal-500/30';
+    if (score >= 80) return 'text-bright-blue bg-hero-blue/15 border-hero-blue/30';
+    if (score >= 65) return 'text-bright-blue bg-hero-blue/15 border-hero-blue/30';
     if (score >= 45) return 'text-amber-400 bg-amber-500/15 border-amber-500/30';
     return 'text-rose-400 bg-rose-500/15 border-rose-500/30';
   };
@@ -178,33 +179,33 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
         
         {/* 1. Income Card */}
-        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div className="bg-white p-3.5 sm:p-5 dash-card flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Income</span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold shrink-0">
+            <span className="text-[10px] sm:text-xs font-semibold text-muted-gray uppercase tracking-wider">Income</span>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-sm bg-hero-blue/10 text-deep-blue flex items-center justify-center font-bold shrink-0">
               <ArrowDownLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
           <div className="mt-2 sm:mt-3">
-            <p className="text-lg sm:text-2xl font-bold text-slate-900 tracking-tight truncate">
+            <p className="dash-stat-value !text-[22px] sm:!text-[28px] truncate">
               {currency}{summary.effectiveIncome.toLocaleString()}
             </p>
-            <p className="text-[10px] sm:text-xs text-emerald-600 mt-0.5 sm:mt-1 font-semibold flex items-center gap-1">
+            <p className="text-[10px] sm:text-xs text-deep-blue mt-0.5 sm:mt-1 font-semibold flex items-center gap-1">
               <span>{profile.payFrequency}</span>
             </p>
           </div>
         </div>
 
         {/* 2. Expenses Card */}
-        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div className="bg-white p-3.5 sm:p-5 dash-card flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Expenses</span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center font-bold shrink-0">
+            <span className="text-[10px] sm:text-xs font-semibold text-muted-gray uppercase tracking-wider">Expenses</span>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-sm bg-rose-50 text-rose-500 flex items-center justify-center font-bold shrink-0">
               <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
           <div className="mt-2 sm:mt-3">
-            <p className="text-lg sm:text-2xl font-bold text-slate-900 tracking-tight truncate">
+            <p className="dash-stat-value !text-[22px] sm:!text-[28px] truncate">
               {currency}{summary.totalExpenses.toLocaleString()}
             </p>
             <p className="text-[10px] sm:text-xs text-rose-500 mt-0.5 sm:mt-1 font-semibold truncate">
@@ -216,22 +217,22 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         {/* 3. Savings Card */}
         <div 
           onClick={() => onNavigateToTab('goals-debts')}
-          className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between cursor-pointer hover:border-emerald-300 transition group"
+          className="bg-white p-3.5 sm:p-5 dash-card flex flex-col justify-between cursor-pointer hover:border-hero-blue/40 transition group"
           title="Click to view Savings Goals & Audit Trail"
         >
           <div className="flex items-center justify-between">
-            <span className="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Verified Saved</span>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold shrink-0 group-hover:scale-105 transition">
+            <span className="text-[10px] sm:text-xs font-semibold text-muted-gray uppercase tracking-wider">Verified Saved</span>
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-sm bg-hero-blue/10 text-deep-blue flex items-center justify-center font-bold shrink-0 group-hover:scale-105 transition">
               <PiggyBank className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             </div>
           </div>
           <div className="mt-2 sm:mt-3">
-            <p className="text-lg sm:text-2xl font-bold text-slate-900 tracking-tight truncate">
+            <p className="dash-stat-value !text-[22px] sm:!text-[28px] truncate">
               {currency}{summary.totalSavings.toLocaleString()}
             </p>
-            <p className="text-[10px] sm:text-xs text-emerald-600 mt-0.5 sm:mt-1 font-semibold flex items-center justify-between">
+            <p className="text-[10px] sm:text-xs text-deep-blue mt-0.5 sm:mt-1 font-semibold flex items-center justify-between">
               <span>{summary.savingsRate.toFixed(0)}% saved</span>
-              <span className="text-[9px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-bold">Proof & Audit →</span>
+              <span className="text-[9px] bg-hero-blue/15 text-deep-blue px-1.5 py-0.2 rounded font-bold">Proof & Audit →</span>
             </p>
           </div>
         </div>
@@ -239,71 +240,74 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         {/* 4. Health Score Card (Dark Sleek Style) */}
         <div 
           onClick={onOpenHealthScoreModal}
-          className="bg-[#0F172A] p-3.5 sm:p-5 rounded-2xl text-white shadow-md relative overflow-hidden group cursor-pointer hover:ring-2 hover:ring-emerald-500/40 transition flex flex-col justify-between active:scale-98 touch-manipulation"
+          className="bg-ink p-3.5 sm:p-5 rounded-sm text-white relative group cursor-pointer hover:bg-[#292929] transition flex flex-col justify-between active:scale-98 touch-manipulation"
         >
-          <div className="flex items-center justify-between z-10">
-            <span className="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Health</span>
-            <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] sm:text-xs font-semibold text-white/70 uppercase tracking-wider">Health</span>
+            <span className="px-1.5 sm:px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold bg-white/15 text-white border border-white/25">
               {healthScore.rating}
             </span>
           </div>
 
-          <div className="mt-2 sm:mt-3 z-10">
+          <div className="mt-2 sm:mt-3">
             <div className="flex items-baseline gap-1">
-              <span className="text-xl sm:text-3xl font-black text-emerald-400 tracking-tight">{healthScore.score}</span>
-              <span className="text-xs sm:text-sm font-semibold text-slate-400">/100</span>
+              <span className="font-display text-xl sm:text-3xl text-white tracking-tight">{healthScore.score}</span>
+              <span className="text-xs sm:text-sm font-semibold text-white/50">/100</span>
             </div>
-            <p className="text-[10px] sm:text-xs text-slate-300 mt-0.5 sm:mt-1 flex items-center justify-between font-medium">
+            <p className="text-[10px] sm:text-xs text-white/70 mt-0.5 sm:mt-1 flex items-center justify-between font-medium">
               <span className="truncate">{healthScore.score >= 70 ? 'Optimal' : 'Needs attention'}</span>
-              <span className="text-emerald-400 group-hover:translate-x-0.5 transition text-[10px] sm:text-[11px] font-bold shrink-0 ml-1">Details →</span>
+              <span className="text-white group-hover:translate-x-0.5 transition text-[10px] sm:text-[11px] font-bold shrink-0 ml-1">Details →</span>
             </p>
           </div>
-
-          {/* Subtle decorative glow */}
-          <div className="absolute -right-6 -bottom-6 w-24 h-24 bg-emerald-500/20 rounded-full blur-2xl pointer-events-none" />
         </div>
 
       </div>
 
-      {/* FEATURED AI INSIGHT HERO CARD (Sleek Emerald Glass Style) */}
-      <div className="bg-gradient-to-r from-emerald-50 via-teal-50/70 to-emerald-50 border border-emerald-200/80 rounded-2xl p-4 sm:p-6 shadow-xs relative overflow-hidden">
+      <TimeMachine
+        currency={currency}
+        currentSavings={summary.totalSavings}
+        monthlyIncome={profile.monthlyIncome}
+      />
+
+      {/* Featured AI insight */}
+      <div className="dash-card bg-white p-4 sm:p-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
           <div className="space-y-1.5 flex-1">
             <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-emerald-800">
+              <span className="w-2 h-2 rounded-full bg-ink animate-pulse"></span>
+              <span className="text-[10px] sm:text-xs font-extrabold uppercase tracking-wider text-deep-blue">
                 AI Financial Observation
               </span>
               {featuredInsight.metricHighlight && (
-                <span className="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-emerald-200/60 text-emerald-900">
+                <span className="px-1.5 sm:px-2 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-hero-blue/20 text-deep-blue">
                   {featuredInsight.metricHighlight}
                 </span>
               )}
             </div>
 
-            <h3 className="text-sm sm:text-lg font-bold text-slate-900">
+            <h3 className="text-sm sm:text-lg font-bold text-ink">
               {featuredInsight.title}
             </h3>
 
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-3xl">
+            <p className="text-xs sm:text-sm text-muted-gray leading-relaxed max-w-3xl">
               {featuredInsight.observation}
             </p>
 
-            <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-1.5 text-xs text-slate-700 font-medium">
-              <span className="font-bold text-emerald-800">Why this matters:</span>
-              <span className="text-slate-600">{featuredInsight.whyExplanation}</span>
+            <div className="pt-1 sm:pt-2 flex flex-wrap items-center gap-1.5 text-xs text-ink/80 font-medium">
+              <span className="font-bold text-deep-blue">Why this matters:</span>
+              <span className="text-muted-gray">{featuredInsight.whyExplanation}</span>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-2 shrink-0 pt-2 md:pt-0">
             <button
               onClick={() => onNavigateToTab('ai-advisor')}
-              className="w-full sm:w-auto px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition shadow-xs flex items-center justify-center gap-1.5 touch-manipulation"
+              className="w-full sm:w-auto px-4 py-2 bg-ink hover:bg-[#292929] text-white rounded-sm text-xs font-bold transition shadow-xs flex items-center justify-center gap-1.5 touch-manipulation"
             >
               <span>Explore AI Advisor</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
-            <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium">
+            <span className="text-[10px] sm:text-[11px] text-muted-gray font-medium">
               Action: {featuredInsight.actionableStep}
             </span>
           </div>
@@ -314,14 +318,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         
         {/* Spending Breakdown Donut Chart */}
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 flex flex-col justify-between">
+        <div className="dash-card p-4 sm:p-6 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-2">
-                <PieChartIcon className="w-4 h-4 text-emerald-600" />
-                <h3 className="text-sm font-bold text-slate-900">Spending Breakdown</h3>
+                <PieChartIcon className="w-4 h-4 text-deep-blue" />
+                <h3 className="text-sm font-bold text-ink">Spending Breakdown</h3>
               </div>
-              <span className="text-xs text-slate-500 font-semibold">
+              <span className="text-xs text-muted-gray font-semibold">
                 {currency}{summary.totalExpenses.toLocaleString()}
               </span>
             </div>
@@ -355,26 +359,26 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 {/* Category Ranking List */}
                 <div className="space-y-1.5 mt-2 max-h-36 overflow-y-auto pr-1">
                   {summary.spendingList.slice(0, 4).map((item) => (
-                    <div key={item.category} className="flex items-center justify-between text-xs py-1 border-b border-slate-100 last:border-0">
+                    <div key={item.category} className="flex items-center justify-between text-xs py-1 border-b border-ink/8 last:border-0">
                       <div className="flex items-center space-x-2 min-w-0 pr-2">
                         <span 
                           className="w-2.5 h-2.5 rounded-full shrink-0" 
                           style={{ backgroundColor: CATEGORY_COLORS[item.category]?.fill || '#94a3b8' }} 
                         />
-                        <span className="text-slate-700 font-medium truncate max-w-[110px] sm:max-w-[150px]">
+                        <span className="text-ink/80 font-medium truncate max-w-[110px] sm:max-w-[150px]">
                           {item.category}
                         </span>
                       </div>
                       <div className="flex items-center space-x-2 font-semibold shrink-0">
-                        <span className="text-slate-400 text-[11px]">{item.percentage.toFixed(0)}%</span>
-                        <span className="text-slate-900">{currency}{item.amount.toLocaleString()}</span>
+                        <span className="text-muted-gray text-[11px]">{item.percentage.toFixed(0)}%</span>
+                        <span className="text-ink">{currency}{item.amount.toLocaleString()}</span>
                       </div>
                     </div>
                   ))}
                 </div>
               </>
             ) : (
-              <div className="py-12 text-center text-xs text-slate-400">
+              <div className="py-12 text-center text-xs text-muted-gray">
                 No expense records for this month yet.
               </div>
             )}
@@ -382,25 +386,25 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* Cash Flow Distribution & Active Goal/Debt */}
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 flex flex-col justify-between">
+        <div className="lg:col-span-2 dash-card p-4 sm:p-6 flex flex-col justify-between">
           <div>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Monthly Cash Flow Architecture</h3>
-                <p className="text-[11px] sm:text-xs text-slate-500">Income vs Expenses vs Savings vs Leftover Buffer</p>
+                <h3 className="text-sm font-bold text-ink">Monthly Cash Flow Architecture</h3>
+                <p className="text-[11px] sm:text-xs text-muted-gray">Income vs Expenses vs Savings vs Leftover Buffer</p>
               </div>
               <div className="flex items-center gap-2">
                 <div 
                   onClick={() => onNavigateToTab('budgets')}
-                  className="px-2.5 py-1 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center space-x-1 cursor-pointer transition touch-manipulation shadow-2xs"
+                  className="px-2.5 py-1 rounded-sm dash-pill dash-pill-blue text-xs font-bold flex items-center space-x-1 cursor-pointer transition touch-manipulation shadow-2xs"
                   title="View Daily Safe-Pacing Breakdown in Budgets"
                 >
-                  <Zap className="w-3 h-3 text-emerald-600 fill-emerald-600 shrink-0" />
+                  <Zap className="w-3 h-3 text-deep-blue fill-deep-blue shrink-0" />
                   <span>Safe Pace: {currency}{dailySafePacing.toFixed(1)}/day</span>
                 </div>
                 <button
                   onClick={() => onNavigateToTab('budgets')}
-                  className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center space-x-1 shrink-0"
+                  className="text-xs font-semibold text-deep-blue hover:text-deep-blue flex items-center space-x-1 shrink-0"
                 >
                   <span className="hidden sm:inline">Budgets</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -428,72 +432,72 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
 
             {/* Quick Active Goal & Debt Snippet */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-3 border-t border-slate-100 mt-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-3 border-t border-ink/8 mt-2">
             {goals[0] ? (
               <div 
                 onClick={() => onNavigateToTab('goals-debts')}
-                className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 cursor-pointer transition active:scale-98 touch-manipulation"
+                className="p-3 rounded-sm bg-soft-gray/70 hover:bg-soft-gray border border-ink/8 cursor-pointer transition active:scale-98 touch-manipulation"
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-slate-900 truncate pr-2">🎯 {goals[0].name}</span>
-                  <span className="font-semibold text-emerald-600 shrink-0">
+                  <span className="font-bold text-ink truncate pr-2">🎯 {goals[0].name}</span>
+                  <span className="font-semibold text-deep-blue shrink-0">
                     {Math.round((goals[0].currentAmount / goals[0].targetAmount) * 100)}%
                   </span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-1.5 mt-2 overflow-hidden">
+                <div className="w-full bg-soft-gray rounded-full h-1.5 mt-2 overflow-hidden">
                   <div 
-                    className="h-full bg-emerald-500 rounded-full" 
+                    className="h-full bg-ink rounded-full" 
                     style={{ width: `${Math.min(100, (goals[0].currentAmount / goals[0].targetAmount) * 100)}%` }}
                   />
                 </div>
-                <p className="text-[10px] text-slate-500 mt-1.5 font-medium">
+                <p className="text-[10px] text-muted-gray mt-1.5 font-medium">
                   {currency}{goals[0].currentAmount.toLocaleString()} of {currency}{goals[0].targetAmount.toLocaleString()}
                 </p>
               </div>
             ) : (
               <div 
                 onClick={() => onNavigateToTab('goals-debts')}
-                className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-dashed border-emerald-300 cursor-pointer transition flex items-center justify-between active:scale-98 touch-manipulation"
+                className="p-3 rounded-sm bg-soft-gray/80 hover:bg-soft-gray/80 border border-ink/10 cursor-pointer transition flex items-center justify-between active:scale-98 touch-manipulation"
               >
                 <div>
-                  <p className="text-xs font-bold text-emerald-800">🎯 Set Your First Savings Goal</p>
-                  <p className="text-[11px] text-slate-500">Emergency fund, laptop, or house rent</p>
+                  <p className="text-xs font-bold text-deep-blue">🎯 Set Your First Savings Goal</p>
+                  <p className="text-[11px] text-muted-gray">Emergency fund, laptop, or house rent</p>
                 </div>
-                <Plus className="w-4 h-4 text-emerald-600 shrink-0" />
+                <Plus className="w-4 h-4 text-deep-blue shrink-0" />
               </div>
             )}
 
             {debts[0] ? (
               <div 
                 onClick={() => onNavigateToTab('goals-debts')}
-                className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 cursor-pointer transition active:scale-98 touch-manipulation"
+                className="p-3 rounded-sm bg-soft-gray/70 hover:bg-soft-gray border border-ink/8 cursor-pointer transition active:scale-98 touch-manipulation"
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-slate-900 truncate pr-2">⚖️ {debts[0].lender}</span>
+                  <span className="font-bold text-ink truncate pr-2">⚖️ {debts[0].lender}</span>
                   <span className="font-semibold text-rose-500 shrink-0">
                     {currency}{debts[0].currentBalance.toLocaleString()}
                   </span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-1.5 mt-2 overflow-hidden">
+                <div className="w-full bg-soft-gray rounded-full h-1.5 mt-2 overflow-hidden">
                   <div 
                     className="h-full bg-rose-500 rounded-full" 
                     style={{ width: `${Math.min(100, (debts[0].currentBalance / debts[0].originalAmount) * 100)}%` }}
                   />
                 </div>
-                <p className="text-[10px] text-slate-500 mt-1.5 font-medium">
+                <p className="text-[10px] text-muted-gray mt-1.5 font-medium">
                   Min: {currency}{debts[0].minimumMonthlyPayment}/mo @ {debts[0].interestRate}%
                 </p>
               </div>
             ) : (
               <div 
                 onClick={() => onNavigateToTab('goals-debts')}
-                className="p-3 rounded-xl bg-slate-50 hover:bg-slate-100/80 border border-slate-200/80 cursor-pointer transition flex items-center justify-between active:scale-98 touch-manipulation"
+                className="p-3 rounded-sm bg-soft-gray/70 hover:bg-soft-gray border border-ink/8 cursor-pointer transition flex items-center justify-between active:scale-98 touch-manipulation"
               >
                 <div>
-                  <p className="text-xs font-bold text-emerald-700">✨ Debt-Free Status</p>
-                  <p className="text-[11px] text-slate-500">No active debts registered</p>
+                  <p className="text-xs font-bold text-deep-blue">✨ Debt-Free Status</p>
+                  <p className="text-[11px] text-muted-gray">No active debts registered</p>
                 </div>
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-deep-blue shrink-0" />
               </div>
             )}
           </div>
@@ -503,28 +507,28 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </div>
 
       {/* 7-DAY SPENDING VS IDEAL DAILY PACING CHART */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 space-y-4">
+      <div className="dash-card p-4 sm:p-6 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center space-x-2">
-              <div className="w-7 h-7 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+              <div className="w-7 h-7 rounded-sm bg-hero-blue/10 text-deep-blue flex items-center justify-center font-bold">
                 <CalendarDays className="w-4 h-4" />
               </div>
-              <h3 className="text-sm sm:text-base font-bold text-slate-900">
+              <h3 className="text-sm sm:text-base font-bold text-ink">
                 Last 7 Days: Spending vs Ideal Daily Pacing
               </h3>
             </div>
-            <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+            <p className="text-[11px] sm:text-xs text-muted-gray mt-0.5">
               Compare actual daily spending against your target daily pacing ceiling ({currency}{sevenDayPacingData.idealRate.toLocaleString()}/day)
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2 text-xs">
-            <span className="px-2.5 py-1 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold flex items-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="px-2.5 py-1 rounded-sm dash-pill dash-pill-blue font-bold flex items-center gap-1">
+              <CheckCircle2 className="w-3.5 h-3.5 text-deep-blue" />
               <span>{sevenDayPacingData.underCount} of 7 days on pace</span>
             </span>
-            <span className="px-2.5 py-1 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 font-semibold">
+            <span className="px-2.5 py-1 rounded-sm bg-soft-gray text-ink/80 border border-ink/10 font-semibold">
               7-Day Avg: <strong>{currency}{sevenDayPacingData.avgDailySpend.toLocaleString()}/day</strong>
             </span>
           </div>
@@ -551,25 +555,25 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     const data = payload[0].payload;
                     const isOver = data.actualSpend > data.idealPace;
                     return (
-                      <div className="bg-slate-900 text-white p-3 rounded-xl shadow-xl border border-slate-800 text-xs space-y-1.5 min-w-[180px]">
-                        <div className="font-bold text-slate-200 pb-1 border-b border-slate-800 flex items-center justify-between">
+                      <div className="bg-ink text-white p-3 rounded-sm shadow-xl border border-white/10 text-xs space-y-1.5 min-w-[180px]">
+                        <div className="font-bold text-white/85 pb-1 border-b border-white/10 flex items-center justify-between">
                           <span>{label}</span>
-                          <span className="text-[10px] text-slate-400">{data.date}</span>
+                          <span className="text-[10px] text-muted-gray">{data.date}</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-400">Actual Spend:</span>
+                          <span className="text-muted-gray">Actual Spend:</span>
                           <span className="font-bold text-white">{currency}{data.actualSpend.toLocaleString()}</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-slate-400">Ideal Daily Pace:</span>
+                          <span className="text-muted-gray">Ideal Daily Pace:</span>
                           <span className="font-bold text-sky-400">{currency}{data.idealPace.toLocaleString()}</span>
                         </div>
-                        <div className="pt-1 border-t border-slate-800/80 flex items-center justify-between text-[11px]">
-                          <span className="text-slate-400">Status:</span>
+                        <div className="pt-1 border-t border-white/10/80 flex items-center justify-between text-[11px]">
+                          <span className="text-muted-gray">Status:</span>
                           {isOver ? (
                             <span className="font-bold text-rose-400">+{currency}{Math.abs(data.diff).toLocaleString()} over pace</span>
                           ) : (
-                            <span className="font-bold text-emerald-400">
+                            <span className="font-bold text-bright-blue">
                               {data.actualSpend === 0 ? 'No expenses 🎉' : `${currency}${Math.abs(data.diff).toLocaleString()} within pace`}
                             </span>
                           )}
@@ -599,7 +603,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 name="Ideal Daily Target" 
                 stroke="#0284c7" 
                 strokeWidth={2.5} 
-                strokeDasharray="4 4"
+                
                 dot={{ r: 3.5, fill: '#0284c7' }}
                 activeDot={{ r: 5 }}
               />
@@ -608,23 +612,23 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {/* Legend & Summary Info */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-100 text-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-ink/8 text-xs">
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <div className="flex items-center space-x-1.5">
-              <span className="w-3 h-3 rounded-xs bg-emerald-500 shrink-0" />
-              <span className="text-slate-600 font-medium text-[11px]">Under Target</span>
+              <span className="w-3 h-3 rounded-xs bg-ink shrink-0" />
+              <span className="text-muted-gray font-medium text-[11px]">Under Target</span>
             </div>
             <div className="flex items-center space-x-1.5">
               <span className="w-3 h-3 rounded-xs bg-rose-500 shrink-0" />
-              <span className="text-slate-600 font-medium text-[11px]">Over Target</span>
+              <span className="text-muted-gray font-medium text-[11px]">Over Target</span>
             </div>
             <div className="flex items-center space-x-1.5">
-              <span className="w-4 h-0.5 bg-sky-600 border-b border-dashed border-sky-600 shrink-0" />
-              <span className="text-slate-600 font-medium text-[11px]">Ideal Target Line ({currency}{sevenDayPacingData.idealRate.toLocaleString()}/day)</span>
+              <span className="w-4 h-0.5 bg-sky-600 shrink-0" />
+              <span className="text-muted-gray font-medium text-[11px]">Ideal Target Line ({currency}{sevenDayPacingData.idealRate.toLocaleString()}/day)</span>
             </div>
           </div>
 
-          <p className="text-[11px] text-slate-500 font-medium">
+          <p className="text-[11px] text-muted-gray font-medium">
             {sevenDayPacingData.underCount >= 4 
               ? '✨ Consistent discipline: More than half the week stayed below the pacing ceiling.'
               : '💡 High spend spikes detected. Staying within the daily pacing line keeps monthly savings intact.'}
@@ -633,17 +637,17 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
       </div>
 
       {/* RECENT TRANSACTIONS TABLE & QUICK CATEGORY CORRECTOR */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6">
+      <div className="dash-card p-4 sm:p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="text-sm font-bold text-slate-900">Recent Transactions</h3>
-            <p className="text-[11px] sm:text-xs text-slate-500">
+            <h3 className="text-sm font-bold text-ink">Recent Transactions</h3>
+            <p className="text-[11px] sm:text-xs text-muted-gray">
               Tap category pill to reassign. MoneyPilot learns your preference.
             </p>
           </div>
           <button
             onClick={() => onNavigateToTab('transactions')}
-            className="text-xs font-semibold text-emerald-600 hover:text-emerald-700 flex items-center space-x-1 shrink-0 ml-2"
+            className="text-xs font-semibold text-deep-blue hover:text-deep-blue flex items-center space-x-1 shrink-0 ml-2"
           >
             <span>All ({transactions.length})</span>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -651,7 +655,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         {recentTransactions.length > 0 ? (
-          <div className="divide-y divide-slate-100">
+          <div className="divide-y divide-ink/8">
             {recentTransactions.map((tx) => {
               const isIncome = tx.type === 'income';
               const isTransfer = tx.type === 'transfer';
@@ -660,15 +664,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               return (
                 <div 
                   key={tx.id} 
-                  className="py-2.5 sm:py-3 flex items-center justify-between text-xs hover:bg-slate-50 px-1 sm:px-2 rounded-xl transition gap-2"
+                  className="py-2.5 sm:py-3 flex items-center justify-between text-xs hover:bg-soft-gray/70 px-1 sm:px-2 rounded-sm transition gap-2"
                 >
                   <div className="flex items-center space-x-2.5 sm:space-x-3 min-w-0 flex-1">
-                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center shrink-0 ${
+                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-sm flex items-center justify-center shrink-0 ${
                       isIncome 
-                        ? 'bg-emerald-100 text-emerald-700' 
+                        ? 'bg-hero-blue/15 text-deep-blue' 
                         : isTransfer 
                         ? 'bg-teal-100 text-teal-700' 
-                        : 'bg-slate-100 text-slate-700'
+                        : 'bg-soft-gray text-ink/80'
                     }`}>
                       {isIncome ? (
                         <ArrowDownLeft className="w-4 h-4" />
@@ -680,10 +684,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     </div>
 
                     <div className="space-y-0.5 min-w-0 flex-1">
-                      <p className="font-semibold text-slate-900 truncate max-w-[130px] sm:max-w-[280px]">
+                      <p className="font-semibold text-ink truncate max-w-[130px] sm:max-w-[280px]">
                         {tx.description}
                       </p>
-                      <div className="flex items-center space-x-1.5 text-[10px] sm:text-[11px] text-slate-500">
+                      <div className="flex items-center space-x-1.5 text-[10px] sm:text-[11px] text-muted-gray">
                         <span>{tx.date}</span>
                         <span>•</span>
                         <span className="truncate">{tx.paymentMethod}</span>
@@ -703,7 +707,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                             setEditingCategoryTxId(null);
                           }}
                           onBlur={() => setEditingCategoryTxId(null)}
-                          className="text-xs bg-white text-slate-900 border border-emerald-500 rounded-lg px-1.5 py-1 focus:outline-none shadow-xs"
+                          className="text-xs bg-white text-ink border border-hero-blue rounded-lg px-1.5 py-1 focus:outline-none shadow-xs"
                         >
                           {ALL_CATEGORIES.map(c => (
                             <option key={c} value={c}>{c}</option>
@@ -712,7 +716,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                       ) : (
                         <button
                           onClick={() => setEditingCategoryTxId(tx.id)}
-                          className="text-[10px] sm:text-[11px] font-semibold px-2 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition truncate max-w-[80px] sm:max-w-[120px] touch-manipulation"
+                          className="text-[10px] sm:text-[11px] font-semibold px-2 py-1 rounded-lg bg-soft-gray text-ink/80 hover:bg-soft-gray transition truncate max-w-[80px] sm:max-w-[120px] touch-manipulation"
                           title="Click to change category"
                         >
                           {tx.category}
@@ -723,10 +727,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     {/* Amount */}
                     <p className={`font-bold text-xs sm:text-sm tracking-tight text-right min-w-[65px] sm:min-w-[75px] ${
                       isIncome 
-                        ? 'text-emerald-600' 
+                        ? 'text-deep-blue' 
                         : isTransfer 
                         ? 'text-teal-600' 
-                        : 'text-slate-900'
+                        : 'text-ink'
                     }`}>
                       {isIncome ? '+' : '-'}{currency}{tx.amount.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })}
                     </p>
@@ -737,18 +741,18 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           </div>
         ) : (
           <div className="py-8 sm:py-10 text-center space-y-2.5">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-100">
+            <div className="w-10 h-10 rounded-sm bg-hero-blue/10 text-deep-blue flex items-center justify-center mx-auto border border-hero-blue/20">
               <Plus className="w-5 h-5 stroke-[2.5]" />
             </div>
             <div>
-              <p className="text-xs sm:text-sm font-bold text-slate-900">No transactions recorded yet</p>
-              <p className="text-[11px] text-slate-500 max-w-sm mx-auto mt-0.5">
+              <p className="text-xs sm:text-sm font-bold text-ink">No transactions recorded yet</p>
+              <p className="text-[11px] text-muted-gray max-w-sm mx-auto mt-0.5">
                 Log your cash, bank, or Mobile Money spend to activate AI learning & daily safe-pacing.
               </p>
             </div>
             <button
               onClick={onOpenNewTransaction}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs font-bold transition shadow-xs touch-manipulation"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-sm bg-ink hover:bg-[#292929] text-white text-xs font-bold transition shadow-xs touch-manipulation"
             >
               <Plus className="w-3.5 h-3.5 stroke-[3]" />
               <span>Add First Transaction</span>

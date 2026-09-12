@@ -341,51 +341,51 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-150">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-xs animate-in fade-in duration-150">
       <div 
-        className="bg-white border border-slate-200 rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden text-slate-900 max-h-[92vh] flex flex-col"
+        className="bg-white border border-ink/10 rounded-sm w-full max-w-xl shadow-2xl overflow-hidden text-ink max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-200 flex items-center justify-between bg-white">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-b border-ink/10 flex items-center justify-between bg-white">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-sm bg-hero-blue/15 text-deep-blue flex items-center justify-center shrink-0">
               <PlusCircle className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-slate-900">Record Transaction</h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">Add spending or income via Voice, AI, or Manual entry</p>
+              <h2 className="text-sm sm:text-base font-bold text-ink">Record Transaction</h2>
+              <p className="text-[11px] sm:text-xs text-muted-gray">Add spending or income via Voice, AI, or Manual entry</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition touch-manipulation"
+            className="p-1.5 rounded-sm text-muted-gray hover:text-ink/80 hover:bg-soft-gray transition touch-manipulation"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex border-b border-slate-200 bg-slate-50/50 px-3 sm:px-6 pt-2 overflow-x-auto no-scrollbar gap-1 sm:gap-2">
+        <div className="flex border-b border-ink/10 bg-soft-gray/80/50 px-3 sm:px-6 pt-2 overflow-x-auto no-scrollbar gap-1 sm:gap-2">
           <button
             onClick={() => setActiveTab('ai')}
             className={`flex items-center space-x-1.5 pb-2.5 px-2.5 sm:px-3 text-xs font-bold border-b-2 transition whitespace-nowrap touch-manipulation ${
               activeTab === 'ai'
-                ? 'border-emerald-600 text-emerald-700'
-                : 'border-transparent text-slate-500 hover:text-slate-900'
+                ? 'border-emerald-600 text-deep-blue'
+                : 'border-transparent text-muted-gray hover:text-ink'
             }`}
           >
             <Sparkles className="w-3.5 h-3.5 shrink-0" />
             <span>AI Natural & Voice</span>
-            <span className="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-semibold">Fast</span>
+            <span className="text-[10px] bg-hero-blue/15 text-deep-blue px-1.5 py-0.2 rounded font-semibold">Fast</span>
           </button>
 
           <button
             onClick={() => setActiveTab('manual')}
             className={`flex items-center space-x-1.5 pb-2.5 px-2.5 sm:px-3 text-xs font-bold border-b-2 transition whitespace-nowrap touch-manipulation ${
               activeTab === 'manual'
-                ? 'border-emerald-600 text-emerald-700'
-                : 'border-transparent text-slate-500 hover:text-slate-900'
+                ? 'border-emerald-600 text-deep-blue'
+                : 'border-transparent text-muted-gray hover:text-ink'
             }`}
           >
             <PlusCircle className="w-3.5 h-3.5 shrink-0" />
@@ -396,8 +396,8 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             onClick={() => setActiveTab('momo_feed')}
             className={`flex items-center space-x-1.5 pb-2.5 px-2.5 sm:px-3 text-xs font-bold border-b-2 transition whitespace-nowrap touch-manipulation ${
               activeTab === 'momo_feed'
-                ? 'border-emerald-600 text-emerald-700'
-                : 'border-transparent text-slate-500 hover:text-slate-900'
+                ? 'border-emerald-600 text-deep-blue'
+                : 'border-transparent text-muted-gray hover:text-ink'
             }`}
           >
             <Smartphone className="w-3.5 h-3.5 shrink-0" />
@@ -415,7 +415,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
               {/* Voice & Text Input Box */}
               <div>
                 <div className="flex items-center justify-between mb-1.5">
-                  <label className="text-xs font-semibold text-slate-700">
+                  <label className="text-xs font-semibold text-ink/80">
                     Speak or type what you spent or received:
                   </label>
                   {isListening && (
@@ -440,9 +440,9 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                       }
                     }}
                     placeholder="e.g. Spent 50 on lunch at Papaye, or Received 1200 freelance consulting..."
-                    className={`w-full h-24 px-3.5 py-2.5 bg-slate-50 border ${
-                      isListening ? 'border-rose-400 ring-2 ring-rose-200 bg-rose-50/20' : 'border-slate-200'
-                    } rounded-xl text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none font-medium transition`}
+                    className={`w-full h-24 px-3.5 py-2.5 bg-soft-gray/80 border ${
+                      isListening ? 'border-rose-400 ring-2 ring-rose-200 bg-rose-50/20' : 'border-ink/10'
+                    } rounded-sm text-ink placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none font-medium transition`}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
@@ -459,10 +459,10 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                         type="button"
                         id="voice-mic-btn"
                         onClick={isListening ? stopListening : startListening}
-                        className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center space-x-1.5 transition touch-manipulation shadow-xs ${
+                        className={`px-3 py-1.5 rounded-sm text-xs font-bold flex items-center space-x-1.5 transition touch-manipulation shadow-xs ${
                           isListening 
                             ? 'bg-rose-600 text-white hover:bg-rose-700 animate-pulse' 
-                            : 'bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-300'
+                            : 'bg-hero-blue/10 text-deep-blue hover:bg-hero-blue/15 border border-hero-blue/30'
                         }`}
                         title={isListening ? "Stop listening" : "Click and speak your transaction"}
                       >
@@ -473,7 +473,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                           </>
                         ) : (
                           <>
-                            <Mic className="w-4 h-4 text-emerald-700" />
+                            <Mic className="w-4 h-4 text-deep-blue" />
                             <span>Speak to Track</span>
                           </>
                         )}
@@ -486,7 +486,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                             setAiPrompt('');
                             setAiParseResult(null);
                           }}
-                          className="text-[11px] text-slate-400 hover:text-slate-700 underline"
+                          className="text-[11px] text-muted-gray hover:text-ink/80 underline"
                         >
                           Clear
                         </button>
@@ -498,7 +498,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                       id="parse-ai-btn"
                       onClick={() => handleAiParse()}
                       disabled={isAiParsing || !aiPrompt.trim()}
-                      className="px-4 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-slate-950 text-xs font-bold flex items-center space-x-1.5 transition shadow-sm"
+                      className="px-4 py-1.5 rounded-sm bg-hero-blue/100 hover:bg-hero-blue disabled:opacity-50 text-slate-950 text-xs font-bold flex items-center space-x-1.5 transition shadow-sm"
                     >
                       {isAiParsing ? (
                         <>
@@ -526,7 +526,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
               {/* Quick sample prompt chips */}
               <div>
-                <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+                <p className="text-[11px] font-semibold text-muted-gray uppercase tracking-wider mb-2">
                   Sample Prompts (Click to select & edit amount):
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -537,8 +537,8 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                       onClick={() => handleSelectSample(p)}
                       className={`px-3 py-1.5 rounded-full text-[11px] font-medium border transition ${
                         aiPrompt === p 
-                          ? 'bg-emerald-500 text-slate-950 border-emerald-600 font-bold shadow-xs' 
-                          : 'bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200'
+                          ? 'bg-hero-blue/100 text-slate-950 border-emerald-600 font-bold shadow-xs' 
+                          : 'bg-soft-gray hover:bg-soft-gray text-ink/80 border-ink/10'
                       }`}
                     >
                       {p}
@@ -549,24 +549,24 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
               {/* AI Parsed Result Preview Card with Inline Editing */}
               {aiParseResult && (
-                <div className="p-4 rounded-xl bg-slate-50 border border-emerald-300 shadow-sm space-y-3 animate-in fade-in duration-200">
+                <div className="p-4 rounded-sm bg-soft-gray/80 border border-hero-blue/30 shadow-sm space-y-3 animate-in fade-in duration-200">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      <h4 className="text-xs font-bold text-emerald-800 uppercase tracking-wider">
+                      <span className="w-2 h-2 rounded-full bg-hero-blue/100 animate-pulse" />
+                      <h4 className="text-xs font-bold text-deep-blue uppercase tracking-wider">
                         AI Categorization Preview
                       </h4>
                     </div>
-                    <span className="text-[11px] text-slate-500 font-medium">Verify or edit details below:</span>
+                    <span className="text-[11px] text-muted-gray font-medium">Verify or edit details below:</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                     
                     {/* Amount & Type (Directly editable) */}
-                    <div className="p-2.5 rounded-lg bg-white border border-slate-200">
+                    <div className="p-2.5 rounded-lg bg-white border border-ink/10">
                       <div className="flex items-center justify-between mb-1">
-                        <label className="text-[10px] font-semibold text-slate-500">Amount & Type</label>
-                        <span className="text-[10px] text-emerald-700 font-bold flex items-center space-x-0.5">
+                        <label className="text-[10px] font-semibold text-muted-gray">Amount & Type</label>
+                        <span className="text-[10px] text-deep-blue font-bold flex items-center space-x-0.5">
                           <Edit3 className="w-2.5 h-2.5" />
                           <span>Editable</span>
                         </span>
@@ -582,7 +582,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                             const val = parseFloat(e.target.value);
                             setAiParseResult(prev => prev ? ({ ...prev, amount: isNaN(val) ? 0 : val }) : null);
                           }}
-                          className="w-28 font-extrabold text-base text-slate-900 bg-slate-50 border border-slate-200 rounded px-2 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                          className="w-28 font-extrabold text-base text-ink bg-soft-gray/80 border border-ink/10 rounded px-2 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
                           placeholder="0.00"
                         />
                         <select
@@ -590,9 +590,9 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                           onChange={(e) => {
                             setAiParseResult(prev => prev ? ({ ...prev, type: e.target.value as any }) : null);
                           }}
-                          className={`text-xs font-bold px-2 py-1 rounded border border-slate-200 focus:outline-none ${
+                          className={`text-xs font-bold px-2 py-1 rounded border border-ink/10 focus:outline-none ${
                             aiParseResult.type === 'income' 
-                              ? 'bg-emerald-100 text-emerald-800' 
+                              ? 'bg-hero-blue/15 text-deep-blue' 
                               : 'bg-rose-100 text-rose-800'
                           }`}
                         >
@@ -604,14 +604,14 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                     </div>
 
                     {/* Assigned Category (Directly editable dropdown) */}
-                    <div className="p-2.5 rounded-lg bg-white border border-slate-200">
-                      <label className="text-[10px] font-semibold text-slate-500 block mb-1">Category</label>
+                    <div className="p-2.5 rounded-lg bg-white border border-ink/10">
+                      <label className="text-[10px] font-semibold text-muted-gray block mb-1">Category</label>
                       <select
                         value={aiParseResult.category || 'Food & Dining'}
                         onChange={(e) => {
                           setAiParseResult(prev => prev ? ({ ...prev, category: e.target.value as ExpenseCategory }) : null);
                         }}
-                        className="w-full font-bold text-xs text-emerald-800 bg-slate-50 border border-slate-200 rounded px-2 py-1.5 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full font-bold text-xs text-deep-blue bg-soft-gray/80 border border-ink/10 rounded px-2 py-1.5 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
                       >
                         {ALL_CATEGORIES.map(cat => (
                           <option key={cat} value={cat}>{cat}</option>
@@ -620,28 +620,28 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                     </div>
 
                     {/* Description */}
-                    <div className="p-2.5 rounded-lg bg-white border border-slate-200">
-                      <label className="text-[10px] font-semibold text-slate-500 block mb-1">Description</label>
+                    <div className="p-2.5 rounded-lg bg-white border border-ink/10">
+                      <label className="text-[10px] font-semibold text-muted-gray block mb-1">Description</label>
                       <input
                         type="text"
                         value={aiParseResult.description || ''}
                         onChange={(e) => {
                           setAiParseResult(prev => prev ? ({ ...prev, description: e.target.value }) : null);
                         }}
-                        className="w-full text-xs font-medium text-slate-900 bg-slate-50 border border-slate-200 rounded px-2 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full text-xs font-medium text-ink bg-soft-gray/80 border border-ink/10 rounded px-2 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
                         placeholder="Description"
                       />
                     </div>
 
                     {/* Payment Channel */}
-                    <div className="p-2.5 rounded-lg bg-white border border-slate-200">
-                      <label className="text-[10px] font-semibold text-slate-500 block mb-1">Payment Method</label>
+                    <div className="p-2.5 rounded-lg bg-white border border-ink/10">
+                      <label className="text-[10px] font-semibold text-muted-gray block mb-1">Payment Method</label>
                       <select
                         value={aiParseResult.paymentMethod || 'MTN MoMo'}
                         onChange={(e) => {
                           setAiParseResult(prev => prev ? ({ ...prev, paymentMethod: e.target.value as PaymentMethod }) : null);
                         }}
-                        className="w-full text-xs font-medium text-slate-900 bg-slate-50 border border-slate-200 rounded px-2 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                        className="w-full text-xs font-medium text-ink bg-soft-gray/80 border border-ink/10 rounded px-2 py-1 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500"
                       >
                         <option value="MTN MoMo">MTN MoMo</option>
                         <option value="Telecel Cash">Telecel Cash</option>
@@ -654,7 +654,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                   </div>
 
                   {aiParseResult.notes && (
-                    <p className="text-[11px] text-slate-600 italic">
+                    <p className="text-[11px] text-muted-gray italic">
                       💡 {aiParseResult.notes}
                     </p>
                   )}
@@ -669,7 +669,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                     type="button"
                     id="confirm-ai-tx-btn"
                     onClick={confirmAiTransaction}
-                    className="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-sm shadow-sm flex items-center justify-center space-x-1.5 transition active:scale-98"
+                    className="w-full py-2.5 rounded-sm bg-hero-blue/100 hover:bg-hero-blue text-slate-950 font-bold text-sm shadow-sm flex items-center justify-center space-x-1.5 transition active:scale-98"
                   >
                     <Check className="w-4 h-4 stroke-[3]" />
                     <span>Confirm & Save ({Number(aiParseResult.amount || 0).toLocaleString()})</span>
@@ -684,14 +684,14 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
             <form onSubmit={handleManualSubmit} className="space-y-4">
               
               {/* Type Switcher */}
-              <div className="grid grid-cols-3 gap-2 p-1 bg-slate-100 rounded-xl border border-slate-200">
+              <div className="grid grid-cols-3 gap-2 p-1 bg-soft-gray rounded-sm border border-ink/10">
                 <button
                   type="button"
                   onClick={() => setType('expense')}
                   className={`py-1.5 text-xs font-bold rounded-lg transition ${
                     type === 'expense'
                       ? 'bg-rose-500 text-white shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      : 'text-muted-gray hover:text-ink'
                   }`}
                 >
                   Expense
@@ -701,8 +701,8 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                   onClick={() => setType('income')}
                   className={`py-1.5 text-xs font-bold rounded-lg transition ${
                     type === 'income'
-                      ? 'bg-emerald-500 text-slate-950 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-hero-blue/100 text-slate-950 shadow-xs'
+                      : 'text-muted-gray hover:text-ink'
                   }`}
                 >
                   Income
@@ -713,7 +713,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                   className={`py-1.5 text-xs font-bold rounded-lg transition ${
                     type === 'transfer'
                       ? 'bg-teal-500 text-slate-950 shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      : 'text-muted-gray hover:text-ink'
                   }`}
                 >
                   Savings Vault
@@ -722,12 +722,12 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
 
               {/* Amount */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-ink/80 mb-1">
                   Amount {currency ? `(${currency})` : ''} *
                 </label>
                 <div className="relative">
                   {currency && (
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 font-bold text-sm">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-gray font-bold text-sm">
                       {currency}
                     </span>
                   )}
@@ -740,17 +740,17 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
                     placeholder="0.00"
-                    className={`w-full ${currency ? 'pl-12' : 'pl-4'} pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-lg font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                    className={`w-full ${currency ? 'pl-12' : 'pl-4'} pr-4 py-2 bg-soft-gray/80 border border-ink/10 rounded-sm text-lg font-bold text-ink focus:outline-none focus:ring-2 focus:ring-emerald-500`}
                   />
                 </div>
               </div>
 
               {/* Category Grid */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+                <label className="block text-xs font-semibold text-ink/80 mb-1.5">
                   Category *
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-h-36 overflow-y-auto p-1 bg-slate-50 rounded-xl border border-slate-200">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-h-36 overflow-y-auto p-1 bg-soft-gray/80 rounded-sm border border-ink/10">
                   {ALL_CATEGORIES.map((cat) => {
                     const isSelected = category === cat;
                     return (
@@ -760,8 +760,8 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                         onClick={() => setCategory(cat)}
                         className={`text-left px-2.5 py-1.5 rounded-lg text-xs font-medium truncate transition ${
                           isSelected
-                            ? 'bg-emerald-500 text-slate-950 font-bold shadow-xs'
-                            : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'
+                            ? 'bg-hero-blue/100 text-slate-950 font-bold shadow-xs'
+                            : 'bg-white text-ink/80 hover:bg-soft-gray border border-ink/10'
                         }`}
                       >
                         {cat}
@@ -774,7 +774,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
               {/* Description & Merchant */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-xs font-semibold text-ink/80 mb-1">
                     Description
                   </label>
                   <input
@@ -782,12 +782,12 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="e.g. Lunch at Papaye, Bolt to Osu"
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
+                    className="w-full px-3 py-2 bg-soft-gray/80 border border-ink/10 rounded-sm text-xs text-ink focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-xs font-semibold text-ink/80 mb-1">
                     Merchant / Provider (Optional)
                   </label>
                   <input
@@ -795,7 +795,7 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                     value={merchant}
                     onChange={(e) => setMerchant(e.target.value)}
                     placeholder="e.g. Melcom, Papaye, ECG"
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
+                    className="w-full px-3 py-2 bg-soft-gray/80 border border-ink/10 rounded-sm text-xs text-ink focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
                   />
                 </div>
               </div>
@@ -803,13 +803,13 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
               {/* Payment Method & Date */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-xs font-semibold text-ink/80 mb-1">
                     Account / Channel
                   </label>
                   <select
                     value={paymentMethod}
                     onChange={(e) => setPaymentMethod(e.target.value as PaymentMethod)}
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
+                    className="w-full px-3 py-2 bg-soft-gray/80 border border-ink/10 rounded-sm text-xs text-ink focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
                   >
                     <option value="MTN MoMo">MTN MoMo</option>
                     <option value="Telecel Cash">Telecel Cash</option>
@@ -821,21 +821,21 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-xs font-semibold text-ink/80 mb-1">
                     Date
                   </label>
                   <input
                     type="date"
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
+                    className="w-full px-3 py-2 bg-soft-gray/80 border border-ink/10 rounded-sm text-xs text-ink focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-sm shadow-sm transition active:scale-98"
+                className="w-full py-2.5 rounded-sm bg-hero-blue/100 hover:bg-hero-blue text-slate-950 font-bold text-sm shadow-sm transition active:scale-98"
               >
                 Save Transaction (Under 5s)
               </button>
@@ -845,57 +845,57 @@ export const TransactionModal: React.FC<TransactionModalProps> = ({
           {/* TAB 3: MoMo / Bank Live Import Feed */}
           {activeTab === 'momo_feed' && (
             <div className="space-y-3">
-              <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-start space-x-2.5">
-                <Smartphone className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-sm bg-hero-blue/10 border border-hero-blue/25 flex items-start space-x-2.5">
+                <Smartphone className="w-5 h-5 text-deep-blue shrink-0 mt-0.5" />
                 <div className="text-xs">
-                  <p className="font-bold text-emerald-800">Connected Wallet Sync Active</p>
-                  <p className="text-slate-600">
+                  <p className="font-bold text-deep-blue">Connected Wallet Sync Active</p>
+                  <p className="text-muted-gray">
                     MoneyPilot automatically scans incoming SMS / API alerts from MTN MoMo and bank accounts and auto-categorizes them for one-tap import.
                   </p>
                 </div>
               </div>
 
               {pendingMoMoAlerts.length === 0 ? (
-                <div className="text-center py-8 bg-slate-50 rounded-xl border border-slate-200">
-                  <Check className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
-                  <p className="text-xs font-bold text-slate-900">All Mobile Money alerts imported!</p>
-                  <p className="text-[11px] text-slate-500 mt-1">
+                <div className="text-center py-8 bg-soft-gray/80 rounded-sm border border-ink/10">
+                  <Check className="w-8 h-8 text-deep-blue mx-auto mb-2" />
+                  <p className="text-xs font-bold text-ink">All Mobile Money alerts imported!</p>
+                  <p className="text-[11px] text-muted-gray mt-1">
                     New transactions from MTN MoMo or Telecel will appear here automatically.
                   </p>
                 </div>
               ) : (
                 <div className="space-y-2.5">
-                  <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                  <p className="text-[11px] font-bold text-muted-gray uppercase tracking-wider">
                     Unimported Transactions ({pendingMoMoAlerts.length}):
                   </p>
                   
                   {pendingMoMoAlerts.map((alert) => (
                     <div 
                       key={alert.id}
-                      className="p-3.5 rounded-xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm transition flex items-center justify-between"
+                      className="p-3.5 rounded-sm bg-white border border-ink/10 hover:border-slate-300 shadow-sm transition flex items-center justify-between"
                     >
                       <div className="space-y-1 max-w-[70%]">
                         <div className="flex items-center space-x-2">
                           <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
                             {alert.sender}
                           </span>
-                          <span className="text-[10px] text-slate-500">{alert.time}</span>
+                          <span className="text-[10px] text-muted-gray">{alert.time}</span>
                         </div>
-                        <p className="text-xs font-semibold text-slate-900 truncate">
+                        <p className="text-xs font-semibold text-ink truncate">
                           {alert.description}
                         </p>
-                        <p className="text-[11px] text-slate-500">
-                          Auto-category: <span className="text-emerald-700 font-semibold">{alert.category}</span>
+                        <p className="text-[11px] text-muted-gray">
+                          Auto-category: <span className="text-deep-blue font-semibold">{alert.category}</span>
                         </p>
                       </div>
 
                       <div className="text-right space-y-1.5">
-                        <p className="text-sm font-black text-slate-900">
+                        <p className="text-sm font-black text-ink">
                           {currency}{alert.amount.toFixed(2)}
                         </p>
                         <button
                           onClick={() => handleImportMoMoAlert(alert)}
-                          className="px-3 py-1 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs flex items-center space-x-1 shadow-sm transition"
+                          className="px-3 py-1 rounded-lg bg-hero-blue/100 hover:bg-hero-blue text-slate-950 font-bold text-xs flex items-center space-x-1 shadow-sm transition"
                         >
                           <Check className="w-3.5 h-3.5" />
                           <span>Import</span>

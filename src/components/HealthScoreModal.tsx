@@ -65,25 +65,25 @@ export const HealthScoreModal: React.FC<HealthScoreModalProps> = ({
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-xs">
       <div 
-        className="bg-white border border-slate-200 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-slate-900 max-h-[90vh] flex flex-col"
+        className="bg-white border border-ink/10 rounded-sm w-full max-w-lg shadow-2xl overflow-hidden text-ink max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-b border-slate-200 flex items-center justify-between bg-white">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-b border-ink/10 flex items-center justify-between bg-white">
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+            <div className="w-8 h-8 rounded-sm bg-hero-blue/15 text-deep-blue flex items-center justify-center shrink-0">
               <Activity className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm sm:text-base font-bold text-slate-900">Financial Health Score</h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">Holistic 5-Pillar Assessment</p>
+              <h2 className="text-sm sm:text-base font-bold text-ink">Financial Health Score</h2>
+              <p className="text-[11px] sm:text-xs text-muted-gray">Holistic 5-Pillar Assessment</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition touch-manipulation"
+            className="p-1.5 rounded-sm text-muted-gray hover:text-ink/80 hover:bg-soft-gray transition touch-manipulation"
           >
             <X className="w-5 h-5" />
           </button>
@@ -93,23 +93,23 @@ export const HealthScoreModal: React.FC<HealthScoreModalProps> = ({
         <div className="p-4 sm:p-6 overflow-y-auto space-y-4 sm:space-y-5 flex-1">
           
           {/* Main Score Dial */}
-          <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between shadow-xs">
+          <div className="p-5 rounded-sm bg-soft-gray/80 border border-ink/10 flex items-center justify-between shadow-xs">
             <div>
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+              <span className="text-xs font-bold text-muted-gray uppercase tracking-wider">
                 Overall Financial Wellness
               </span>
               <div className="flex items-baseline space-x-2 mt-1">
-                <span className="text-4xl font-black text-slate-900">{healthScore.score}</span>
-                <span className="text-sm font-semibold text-slate-400">/ 100</span>
+                <span className="text-4xl font-black text-ink">{healthScore.score}</span>
+                <span className="text-sm font-semibold text-muted-gray">/ 100</span>
               </div>
-              <p className="text-xs text-emerald-700 font-bold mt-1">
+              <p className="text-xs text-deep-blue font-bold mt-1">
                 {healthScore.rating} • Stronger than 68% of peers
               </p>
             </div>
 
-            <div className="w-20 h-20 rounded-full border-4 border-emerald-100 flex items-center justify-center relative">
+            <div className="w-20 h-20 rounded-full border-4 border-hero-blue/20 flex items-center justify-center relative">
               <div 
-                className="w-16 h-16 rounded-full border-4 border-emerald-500 flex items-center justify-center font-black text-lg text-slate-900"
+                className="w-16 h-16 rounded-full border-4 border-hero-blue flex items-center justify-center font-black text-lg text-ink"
               >
                 {healthScore.score}
               </div>
@@ -118,31 +118,31 @@ export const HealthScoreModal: React.FC<HealthScoreModalProps> = ({
 
           {/* 5 Pillars Breakdown */}
           <div className="space-y-3">
-            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <h3 className="text-xs font-bold text-muted-gray uppercase tracking-wider">
               Score Breakdown Across 5 Pillars:
             </h3>
 
             {pillars.map((p, idx) => {
               const percent = (p.score / p.max) * 100;
               return (
-                <div key={idx} className="p-3.5 rounded-xl bg-white border border-slate-200 space-y-1.5 shadow-xs">
+                <div key={idx} className="p-3.5 rounded-sm bg-white border border-ink/10 space-y-1.5 shadow-xs">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-bold text-slate-900">{p.name}</span>
-                    <span className="font-extrabold text-emerald-700">
-                      {p.score} <span className="text-slate-400 font-normal">/ {p.max} pts</span>
+                    <span className="font-bold text-ink">{p.name}</span>
+                    <span className="font-extrabold text-deep-blue">
+                      {p.score} <span className="text-muted-gray font-normal">/ {p.max} pts</span>
                     </span>
                   </div>
 
-                  <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200">
+                  <div className="w-full bg-soft-gray rounded-full h-2 overflow-hidden border border-ink/10">
                     <div 
-                      className="h-full bg-emerald-500 rounded-full"
+                      className="h-full bg-hero-blue/100 rounded-full"
                       style={{ width: `${percent}%` }}
                     />
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] text-slate-500">
+                  <div className="flex items-center justify-between text-[10px] text-muted-gray">
                     <span>{p.description}</span>
-                    <span className="text-slate-700 font-semibold">{p.benchmark}</span>
+                    <span className="text-ink/80 font-semibold">{p.benchmark}</span>
                   </div>
                 </div>
               );
@@ -151,27 +151,27 @@ export const HealthScoreModal: React.FC<HealthScoreModalProps> = ({
 
           {/* Strengths & Improvements */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <div className="p-3.5 rounded-xl bg-emerald-50 border border-emerald-200 space-y-1.5 text-xs">
-              <div className="flex items-center space-x-1.5 text-emerald-800 font-bold">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+            <div className="p-3.5 rounded-sm bg-hero-blue/10 border border-hero-blue/25 space-y-1.5 text-xs">
+              <div className="flex items-center space-x-1.5 text-deep-blue font-bold">
+                <CheckCircle2 className="w-4 h-4 text-deep-blue" />
                 <span>Financial Strengths</span>
               </div>
-              <ul className="space-y-1 text-[11px] text-slate-700">
+              <ul className="space-y-1 text-[11px] text-ink/80">
                 {healthScore.strengths.map((s, i) => (
                   <li key={i} className="flex items-start space-x-1">
-                    <span className="text-emerald-600 font-bold">•</span>
+                    <span className="text-deep-blue font-bold">•</span>
                     <span>{s}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 space-y-1.5 text-xs">
+            <div className="p-3.5 rounded-sm bg-amber-50 border border-amber-200 space-y-1.5 text-xs">
               <div className="flex items-center space-x-1.5 text-amber-800 font-bold">
                 <AlertTriangle className="w-4 h-4 text-amber-600" />
                 <span>Areas to Improve</span>
               </div>
-              <ul className="space-y-1 text-[11px] text-slate-700">
+              <ul className="space-y-1 text-[11px] text-ink/80">
                 {healthScore.improvements.map((imp, i) => (
                   <li key={i} className="flex items-start space-x-1">
                     <span className="text-amber-600 font-bold">•</span>
@@ -185,10 +185,10 @@ export const HealthScoreModal: React.FC<HealthScoreModalProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-slate-200 bg-slate-50 flex justify-end">
+        <div className="p-4 border-t border-ink/10 bg-soft-gray/80 flex justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs font-bold transition shadow-sm"
+            className="px-5 py-2 rounded-sm bg-hero-blue/100 hover:bg-hero-blue text-slate-950 text-xs font-bold transition shadow-sm"
           >
             Got It
           </button>
