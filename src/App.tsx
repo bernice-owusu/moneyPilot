@@ -9,10 +9,10 @@ import {
   Bot as BotIcon,
 } from 'lucide-react';
 
-import allAccountsCard from '../design/assets/cards/all_accounts_card.png';
-import brighterTomorrowCard from '../design/assets/cards/build_brighter_tomorrows.png';
-import smarterSpendingCard from '../design/assets/cards/smarter_spending_happier_living.png';
-import savingsVaultCard from '../design/assets/cards/savings_vault_card.png';
+const allAccountsCard = '/images/all_accounts_card.png';
+const brighterTomorrowCard = '/images/build_brighter_tomorrows.png';
+const smarterSpendingCard = '/images/smarter_spending_happier_living.png';
+const savingsVaultCard = '/images/savings_vault_card.png';
 
 import { BrandWordmark } from './components/ui/BrandWordmark';
 import { EditorialHeroHeading } from './components/ui/EditorialHeroHeading';

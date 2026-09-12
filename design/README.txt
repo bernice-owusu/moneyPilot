@@ -1,11 +1,20 @@
-MoneyPilot Design Asset Pack
+MoneyPilot design notes
 
-Contents:
-- mockups/: full landing-page mockups (hero, features, FAQ, footer)
-- assets/branding/: MoneyPilot logo, collaboration badge, slogan lettering
-- assets/cards/: floating promo/UI cards
-- assets/backgrounds/: Ghana-inspired hero background
-- assets/phone/: standalone MoneyPilot phone mockup
-- references/: product and architecture guide used to adapt the design
+Images live together in one folder:
 
-Generated for the ABSA × MTN Ghana Hackathon concept.
+  public/images/
+
+  all_accounts_card.png
+  build_brighter_tomorrows.png
+  from_momo_to_more.png
+  savings_vault_card.png
+  smarter_spending_happier_living.png
+  subtle-paper-grain.png
+
+Do not split these into cards/, textures/, branding/, or mockups/.
+The app imports them as /images/<filename>.
+
+Product architecture notes stay here:
+
+  design/references/MoneyPilot_Product_Architecture_Guide.md
+
