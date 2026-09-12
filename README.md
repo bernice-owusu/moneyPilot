@@ -49,8 +49,7 @@ Optional env:
 ## Project layout
 
 ```text
-public/images/     all product images (one folder, not split)
-design/references/ architecture notes
+public/assets/     required assets (images + architecture guide)
 src/components/    app screens
 src/components/ui/ landing and shared UI
 src/App.tsx        landing page + finance console
@@ -59,9 +58,9 @@ server.ts          Express host and Gemini routes
 
 Hero screens rotate on their own. There are no carousel click, pause, or hover controls.
 
-## Images
+## Assets
 
-Keep every raster asset in `public/images/`. Do not nest `cards/`, `textures/`, or similar subfolders.
+Keep every required asset in `public/assets/`. There is no `design/` folder.
 
 | File | Used for |
 | --- | --- |
@@ -69,8 +68,9 @@ Keep every raster asset in `public/images/`. Do not nest `cards/`, `textures/`, 
 | `smarter_spending_happier_living.png` | Safe Daily Pace feature |
 | `savings_vault_card.png` | Savings vaults feature |
 | `build_brighter_tomorrows.png` | AI advisor feature |
-| `from_momo_to_more.png` | Campaign still (same folder) |
+| `from_momo_to_more.png` | Campaign still |
 | `subtle-paper-grain.png` | Hero paper texture |
+| `MoneyPilot_Product_Architecture_Guide.md` | Product architecture notes |
 
-Reference them as `/images/<filename>`.
+Reference images as `/assets/<filename>`.
 
